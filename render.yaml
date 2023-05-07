@@ -1,8 +1,8 @@
 databases:
   - name: postgres
-    plan: postgresql-free
+    plan: pg-starter
   - name: redis
-    plan: redis-free
+    plan: redis-starter
 
 services:
   - type: web
