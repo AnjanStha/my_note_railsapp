@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: noteapp_production
   username: noteapp
   password: <%= ENV["NOTEAPP_DATABASE_PASSWORD"] %>
