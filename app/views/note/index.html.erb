@@ -1,0 +1,61 @@
+
+
+<div class="body">
+
+  <div class="navbar">
+      <div class="left-navbar">
+      <%= image_tag asset_path('logo.png'), alt: 'truemark_logo' %>
+      </div>
+
+      <div class="right-navbar">
+      <%= button_to  destroy_user_session_path, method: :delete,class:"btn btn-danger", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }  do %>
+           <span> Logout</span>
+        <% end %>
+      </div>
+
+  </div>
+
+  <div class="container1">
+
+    <div class="main-container">
+          
+        <div class="top-container">
+            <div class="left-top-container">
+                <p>Notes</p>
+            </div>
+
+            <div class="right-top-container">
+              <div class="filter"> Filter by: </div>
+             
+              <%= form_tag note_path, method: :get do %>
+                <div>
+                  <%= date_field_tag :start_date, params[:start_date], onchange: "this.form.submit();" , class: "my-date-field"%>
+                </div>
+              <% end %>
+
+              <% if @notes.present? %>
+                    <%= link_to new_note_path do %>
+                    <div class="add-note-buttom">        
+                    <i class='bx bx-plus icon'></i>
+                        <p class="text">Add Note</p>
+                      
+                    </div>
+                    <% end %>
+              <% end %>
+          
+            </div>
+        </div>
+        <% if @notes.empty? %>
+           <%= render partial: "note_empty" %>
+        <% else %>
+            <%= render partial: "note_form" %>
+       <% end %>
+      
+    
+    </div>
+  </div>
+
+</div>
+
+
+
